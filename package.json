@@ -1,0 +1,86 @@
+{
+  "name": "vscode-mdn-docs",
+  "displayName": "MDN Docs",
+  "description": "Easily view MDN documentation within vscode or an external browser.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Education", "Other"
+  ],
+  "author": {
+    "name": "Cory Gross",
+    "email": "coryg89@gmail.com",
+    "url": "https://github.com/coryg89"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coryg89/vscode-mdn-docs"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#007ACC",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:javascript",
+    "onLanguage:html",
+    "onLanguage:css"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mdnDocs.showMdnDocs",
+        "title": "Show MDN Docs",
+        "category": "MDN Docs",
+        "enablement": "editorLangId == typescript || editorLangId == javascript || editorLangId == html || editorLangId == css"
+      }
+    ],
+    "configuration": {
+        "type": "object",
+        "title": "MDN Docs",
+        "properties": {
+            "mdnDocs.openInBrowser": {
+                "type": "boolean",
+                "default": false,
+                "description": "Open MDN documentation in an external browser (default is to open within vscode)."
+            }
+        }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == typescript || editorLangId == javascript || editorLangId == html || editorLangId == css",
+          "command": "mdnDocs.showMdnDocs",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.86.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
