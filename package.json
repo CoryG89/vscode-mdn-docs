@@ -2,7 +2,7 @@
   "name": "vscode-mdn-docs",
   "displayName": "MDN Docs",
   "description": "Easily view MDN documentation within vscode or an external browser.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.86.0"
   },
@@ -25,10 +25,13 @@
     "theme": "dark"
   },
   "activationEvents": [
+    "onLanguage:typescriptreact",
     "onLanguage:typescript",
     "onLanguage:javascript",
     "onLanguage:html",
-    "onLanguage:css"
+    "onLanguage:css",
+    "onLangauge:scss",
+    "onLanguage:less"
   ],
   "main": "./out/extension.js",
   "contributes": {
